@@ -157,7 +157,7 @@ export default function HomePage() {
                             <Link to="/shop" className="inline-block border-b-2 border-[#1A1A1A] pb-2 text-xs font-bold uppercase tracking-widest hover:text-[#C6A76A] hover:border-[#C6A76A] transition-all">Ver Manifesto</Link>
                         </div>
                         <div className="relative aspect-square">
-                            <img src="C:/Users/yannb/.gemini/antigravity/brain/cba28ebd-eedf-4058-97d4-640afcd72a71/premium_lingerie_hero_2_1773080877095.png" className="w-full h-full object-cover shadow-2xl" alt="Manifesto Meraki" />
+                            <img src="/assets/banners/banner-2.jpg" className="w-full h-full object-cover shadow-2xl" alt="Manifesto Meraki" />
                         </div>
                     </div>
                 </section>
