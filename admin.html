@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meraki - Painel Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">MERAKI</a>
+            <span class="sidebar-badge">Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link active" data-section="dashboard">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                Dashboard
+            </a>
+            <a href="#" class="sidebar-link" data-section="products">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                Produtos
+            </a>
+            <a href="index.html" class="sidebar-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Ver Loja
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="sidebar-link" id="adminLogout">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Sair
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main" id="adminMain">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <button class="mobile-menu-btn" id="sidebarToggle">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="topbar-title" id="pageTitle">Dashboard</h1>
+            <div class="topbar-user">
+                <span id="adminName">Admin</span>
+                <div class="topbar-avatar" id="adminAvatar">A</div>
+            </div>
+        </header>
+
+        <!-- Access Denied -->
+        <div class="admin-denied" id="accessDenied" style="display:none;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="64" height="64">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <h2>Acesso Restrito</h2>
+            <p>Você precisa ser administrador para acessar esta página.</p>
+            <a href="auth.html" class="btn btn-primary">Fazer Login</a>
+        </div>
+
+        <!-- Dashboard Section -->
+        <section class="admin-section active" id="sectionDashboard">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:var(--gradient-primary);"><svg fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg></div>
+                    <div class="stat-info"><span class="stat-number" id="statProducts">0</span><span
+                            class="stat-label">Produtos</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:var(--gradient-accent);"><svg fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg></div>
+                    <div class="stat-info"><span class="stat-number" id="statCategories">0</span><span
+                            class="stat-label">Categorias</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:linear-gradient(135deg,#7E8A78,#5A6B52);"><svg fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg></div>
+                    <div class="stat-info"><span class="stat-number" id="statOffers">0</span><span class="stat-label">Em
+                            Oferta</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="admin-section" id="sectionProducts">
+            <div class="section-toolbar">
+                <input type="text" class="toolbar-search" id="productSearch" placeholder="Buscar produtos...">
+                <button class="btn btn-primary" id="addProductBtn">+ Novo Produto</button>
+            </div>
+            <div class="products-table-wrapper">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Seção</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody"></tbody>
+                </table>
+                <div class="empty-state" id="emptyProducts" style="display:none;">
+                    <p>Nenhum produto encontrado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Modal -->
+        <div class="admin-modal-overlay" id="productModalOverlay"></div>
+        <div class="admin-modal" id="productModal">
+            <div class="admin-modal-header">
+                <h2 id="productModalTitle">Novo Produto</h2>
+                <button class="modal-close" id="productModalClose"><svg fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <form class="admin-modal-body" id="productForm">
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Nome</label><input type="text" class="form-input"
+                            id="pName" required></div>
+                    <div class="form-group"><label class="form-label">Categoria</label>
+                        <select class="form-input" id="pCategory">
+                            <option value="Conjuntos">Conjuntos</option>
+                            <option value="Linha Noite">Linha Noite</option>
+                            <option value="Linha Sexy">Linha Sexy</option>
+                            <option value="Plus Size">Plus Size</option>
+                            <option value="Fitness">Fitness</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Preço (R$)</label><input type="number"
+                            class="form-input" id="pPrice" step="0.01" min="0" required></div>
+                    <div class="form-group"><label class="form-label">Preço Original (R$)</label><input type="number"
+                            class="form-input" id="pOriginalPrice" step="0.01" min="0" value="0"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Badge</label><input type="text" class="form-input"
+                            id="pBadge" placeholder="Ex: NEW, 15% OFF"></div>
+                    <div class="form-group"><label class="form-label">Seção</label>
+                        <select class="form-input" id="pSection">
+                            <option value="best-sellers">Best Sellers</option>
+                            <option value="featured">Destaques</option>
+                            <option value="new-collection">Novas Coleções</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group"><label class="form-label">Tamanhos (separados por vírgula)</label><input
+                        type="text" class="form-input" id="pSizes" value="P, M, G, GG"></div>
+                <div class="form-group"><label class="form-label">URL da Imagem</label><input type="text"
+                        class="form-input" id="pImage" placeholder="https://... ou assets/images/..."></div>
+                <div class="form-group"><label class="form-label">Descrição</label><textarea
+                        class="form-input form-textarea" id="pDescription" rows="3"></textarea></div>
+                <input type="hidden" id="pId">
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelProduct">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="saveProduct"><span class="btn-text">Salvar</span>
+                        <div class="spinner"
+                            style="display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;margin:0 auto;">
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Delete Confirm -->
+        <div class="admin-modal-overlay" id="deleteOverlay"></div>
+        <div class="admin-modal admin-modal-sm" id="deleteModal">
+            <div class="admin-modal-header">
+                <h2>Excluir Produto</h2><button class="modal-close" id="deleteModalClose"><svg fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <div class="admin-modal-body">
+                <p>Tem certeza que deseja excluir <strong id="deleteProductName"></strong>? Esta ação não pode ser
+                    desfeita.</p>
+                <div class="form-actions"><button class="btn btn-secondary" id="cancelDelete">Cancelar</button><button
+                        class="btn btn-primary" style="background:#dc3545;" id="confirmDelete">Excluir</button></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="supabase-client.js"></script>
+    <script src="supabase.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
